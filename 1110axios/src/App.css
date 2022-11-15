@@ -1,0 +1,18 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  width: 100vw;
+  display: flex;
+}
+.dataContainer {
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  background-color: gainsboro;
+  margin: 10px;
+}
