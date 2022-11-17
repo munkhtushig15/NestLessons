@@ -1,1 +1,39 @@
-
+.container {
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #081230;
+    gap: 20px;
+}
+.srchBox {
+    width: 20%;
+    padding: 10px;
+    font-size: 18px;
+}
+.btnBox {
+    padding: 5px;
+    font-size: 15px;
+    width: 5%;
+    height: 100%;
+}
+.srchBoxContainer {
+    display: flex;
+    gap: 1%;
+    align-items: center;
+}
+.userBox {
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    border-radius: 20px;
+    background-color: #ffffff10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #081230;
+    color: #fff;
+}

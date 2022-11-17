@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import "./App.css";
 
 const UserBox = ({ user }) => {
   console.log(user);
   return (
-    <div style={{ border: "1px solid red" }}>
+    <div className="userBox">
       <p>{user.title}</p>
       <p>
         {user.firstName} {user.lastName}
@@ -38,6 +39,24 @@ export default function App() {
     setData([rosponse.data]);
   };
 
+  const deleteData = async () => {
+    const rosponse = await instance.delete(`user/${id}`);
+    setData(
+      data.filter((e) => {
+        return e.id !== id;
+      })
+    );
+  };
+
+  const postData = async () => {
+    const rosponse = await instance.delete(`user/${id}`);
+    setData(
+      data.filter((e) => {
+        return;
+      })
+    );
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -57,9 +76,27 @@ export default function App() {
   // };
 
   return (
-    <div>
-      <input type="text" onChange={(e) => setId(e.target.value)}></input>
-      <button onClick={getDataById}>Get</button>
+    <div className="container">
+      <div className="srchBoxContainer">
+        <input
+          placeholder="Search Here ..."
+          className="srchBox"
+          type="text"
+          onChange={(e) => setId(e.target.value)}
+        ></input>
+        <button className="btnBox" onClick={getDataById}>
+          Get
+        </button>
+        <button className="btnBox" onClick={getDataById}>
+          Post
+        </button>
+        <button className="btnBox" onClick={getDataById}>
+          Patch
+        </button>
+        <button className="btnBox" onClick={deleteData}>
+          Delete
+        </button>
+      </div>
 
       {data &&
         data.map((user) => {

@@ -1,0 +1,28 @@
+.productBox {
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.prdctImages {
+  width: 280px;
+  
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: fit-content;
+  background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-vector%2Ffloral-pattern-background-vector-remixed-from-artworks-by-charles-goy_16257449.htm&psig=AOvVaw07Ym0LEYaARvDXQEiHXKM0&ust=1668765081778000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCODR_sH4tPsCFQAAAAAdAAAAABAD");
+}
+
+.inContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
