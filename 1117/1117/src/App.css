@@ -1,17 +1,20 @@
 .productBox {
   width: 300px;
+  height: 550px;
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  
 }
 
 
 .prdctImages {
-  width: 280px;
-  
+  width: 90%;
+  border-radius: 20px;
 }
 
 .container {
@@ -19,10 +22,63 @@
   width: 100vw;
   height: fit-content;
   background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-vector%2Ffloral-pattern-background-vector-remixed-from-artworks-by-charles-goy_16257449.htm&psig=AOvVaw07Ym0LEYaARvDXQEiHXKM0&ust=1668765081778000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCODR_sH4tPsCFQAAAAAdAAAAABAD");
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+  
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.srchBoxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  gap: 20px;
 }
 
 .inContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
+  padding: 0 5% 5% 5%;
+}
+
+.btnBox{
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.srchBox {
+  width: 300px;
+  padding: 5px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+@keyframes coolBackground {
+  0%   { background: #33CCCC; }
+  20%  { background: #33CC36; }
+  40%  { background: #B8CC33; }
+  60%  { background: #FCCA00; }
+  80%  { background: #33CC36; }
+  100% { background: #33CCCC; }
 }
