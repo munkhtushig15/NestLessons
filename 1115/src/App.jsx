@@ -1,6 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+
+import { SpinnerCustomized } from "./components/Loading.jsx";
+// import ReactLoading from "react-loading";
 
 const UserBox = ({ user }) => {
   console.log(user);
@@ -18,7 +22,20 @@ const UserBox = ({ user }) => {
 export default function App() {
   const [data, setData] = useState([]);
   const [id, setId] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // const postData = async () => {
+  //   const rosponse = await instance.delete(`user/${id}`);
+  //   setData(
+  //     data.filter((e) => {
+  //       return;
+  //     })
+  //   );
+  // };
+
+  useEffect(() => {
+    getData();
+  }, []);
   const instance = axios.create({
     baseURL: "https://dummyapi.io/data/v1/",
     headers: {
@@ -27,11 +44,11 @@ export default function App() {
     },
   });
 
-  //hereglegchdin data awj bga
-
   const getData = async () => {
+    setIsLoading(true);
     const rosponse = await instance.get(`user`);
     setData(rosponse.data.data);
+    setIsLoading(false);
   };
 
   const getDataById = async () => {
@@ -47,19 +64,6 @@ export default function App() {
       })
     );
   };
-
-  const postData = async () => {
-    const rosponse = await instance.delete(`user/${id}`);
-    setData(
-      data.filter((e) => {
-        return;
-      })
-    );
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
   // const postData = async () => {
   //   const rosponse = await instance.post("", {});
   //   console.log(rosponse);
@@ -98,10 +102,13 @@ export default function App() {
         </button>
       </div>
 
-      {data &&
-        data.map((user) => {
-          return <UserBox user={user} />;
-        })}
+      {isLoading ? (
+        <SpinnerCustomized />
+      ) : (
+        data.map((user, id) => {
+          return <UserBox key={id} user={user} />;
+        })
+      )}
     </div>
   );
 }
