@@ -6,12 +6,15 @@ import "../App.css";
 const ProductsBox = ({ user }) => {
   console.log("user", user);
   return (
-    <Link to={`/${user.id}`}>
-      <div className="productBox">
-        <p>{user.title}</p>
-        <p>{user.brand}</p>
-        <img className="prdctImages" src={user.images[0]} alt="" />
-        <p>{user.price}$</p>
+    <Link className="noneDeco" to={`/${user.id}`}>
+      <div className="productBox noneDeco">    
+        <p className="brndProduct noneDeco">{user.brand}</p>    
+        <img className="prdctImages" src={user.images[0]} alt="zuragLBsiim" />
+        <div className="infoContainer">
+          <h3 className="prdctTitle noneDeco">{user.title}</h3>
+          <p className="prdctDescrip noneDeco">{user.description}</p>
+        </div>
+        <p className="priceStyle noneDeco">${user.price}</p>
       </div>
     </Link>
   );
@@ -79,7 +82,7 @@ export default function Main() {
           type="text"
           onChange={(e) => setId(e.target.value)}
         ></input>
-        <button className="btnBox" onClick={getDataById}>
+        <button className="btnBox gradient-text" onClick={getDataById}>
           Get
         </button>
       </div>
