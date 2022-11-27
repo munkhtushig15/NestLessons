@@ -17,7 +17,8 @@
 .brndProduct {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 15px;
-  color: #4C4452;
+  color: #262626bf;
+  font-weight:600;
   text-decoration: none;
 }
 .infoContainer {
@@ -50,6 +51,35 @@
   justify-content: center;
   align-items: center;
 }
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body {
+  scrollbar-width: thin;
+}
+body::-webkit-scrollbar-track {
+  background-color: #00648F;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  border: 20px solid #00000055;
+}
+
+
+.prdctDescrip::-webkit-scrollbar {
+  width: 5px;
+}
+.prdctDescrip {
+  scrollbar-width: thin;
+  
+}
+.prdctDescrip::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  border: 20px solid #00000055;
+}
+
+
 /* .prdctImages :hover {
   border-radius: 20px;
   transition: 1s;
@@ -72,11 +102,9 @@
   gap: 20px;
   padding-bottom: 20%;
 
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite; */
-
-  background: linear-gradient(-45deg, #4C8076, #00C9A9);
+  animation: gradient 15s ease infinite;
+  background: linear-gradient(-45deg, #004870, #00648F, #004870);
 }
   
 @keyframes gradient {
@@ -90,7 +118,17 @@
     background-position: 0% 50%;
   }
 }
-
+/* @keyframes scrollGradient {
+  0% {
+    background-color: #00648F;
+  }
+  50% {
+    background-color: #3982AF;
+  }
+  100% {
+    background-color: #5EA2D0;
+  }
+} */
 .srchBoxContainer {
   display: flex;
   justify-content: center;
@@ -119,7 +157,7 @@
 }
 
 ::placeholder {
-  color: #189755;
+  color: #0d2e5e;
 }
 
 .srchBox {
@@ -222,8 +260,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  
+  background: linear-gradient(-45deg, #004870, #00648F, #004870);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -294,7 +332,8 @@ header {
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #004870, #00648F, #004870);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
+
