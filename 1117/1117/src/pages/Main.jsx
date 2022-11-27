@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading"
 import "../App.css";
 
 const ProductsBox = ({ user }) => {
@@ -23,6 +24,7 @@ const ProductsBox = ({ user }) => {
 export default function Main() {
   const [data, setData] = useState([]);
   const [id, setId] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   const instance = axios.create({
     baseURL: "https://dummyjson.com/",
@@ -35,9 +37,11 @@ export default function Main() {
   //hereglegchdin data awj bga
 
   const getData = async () => {
+    setIsLoading(true);
     const response = await instance.get(`products`);
     console.log(response);
     setData(response.data.products);
+    setIsLoading(false);
   };
 
   const getDataById = async () => {
@@ -74,24 +78,30 @@ export default function Main() {
   // };
 
   return (
-    <div className="container">
-      <div className="srchBoxContainer">
-        <input
-          placeholder="Search Here ..."
-          className="srchBox"
-          type="text"
-          onChange={(e) => setId(e.target.value)}
-        ></input>
-        <button className="btnBox gradient-text" onClick={getDataById}>
-          Get
-        </button>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : 
+      (<div className="container">
+        <div className="srchBoxContainer">
+          <input
+            placeholder="Search Here ..."
+            className="srchBox"
+            type="text"
+            onChange={(e) => setId(e.target.value)}
+          ></input>
+          <button className="btnBox gradient-text" onClick={getDataById}>
+            Get
+          </button>
+        </div>
+        <div className="inContainer">
+          {data &&
+            data.map((user) => {
+              return <ProductsBox user={user} />;
+            })}
+        </div>
       </div>
-      <div className="inContainer">
-        {data &&
-          data.map((user) => {
-            return <ProductsBox user={user} />;
-          })}
-      </div>
-    </div>
+      )}
+    </>
   );
 }

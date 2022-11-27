@@ -1,19 +1,23 @@
 import "../App.css";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import Main from "./Main";
+// import Main from "./Main";
 import { useEffect, useState } from "react";
+import Loading from "../components/Loading"
+
 export default function ProductNews() {
   const params = useParams();
-  const location = useLocation();
 
   console.log("params", params);
 
   const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const getDataById = async (id) => {
+    setIsLoading(true);
     const response = await axios.get(`https://dummyjson.com/products/${id}`);
     setData(response.data);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -21,7 +25,9 @@ export default function ProductNews() {
   }, []);
   return (
     <div >
-      {data && (
+      {isLoading ? (
+        <Loading/>
+      ) : (
         <div className="productNewsContainer">
           <header>
             <Link className="noneDeco" to={`/`}>
