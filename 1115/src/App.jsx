@@ -1,10 +1,8 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
-
-import { SpinnerCustomized } from "./components/Loading.jsx";
-// import ReactLoading from "react-loading";
+import Loading from "./components/Loading";
 
 const UserBox = ({ user }) => {
   console.log(user);
@@ -52,17 +50,21 @@ export default function App() {
   };
 
   const getDataById = async () => {
+    setIsLoading(true);
     const rosponse = await instance.get(`user/${id}`);
     setData([rosponse.data]);
+    setIsLoading(false);
   };
 
   const deleteData = async () => {
+    setIsLoading(true);
     const rosponse = await instance.delete(`user/${id}`);
     setData(
       data.filter((e) => {
         return e.id !== id;
       })
     );
+    setIsLoading(false);
   };
   // const postData = async () => {
   //   const rosponse = await instance.post("", {});
@@ -80,10 +82,14 @@ export default function App() {
   // };
 
   return (
-    <div className="container">
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="container">
       <div className="srchBoxContainer">
         <input
-          placeholder="Search Here ..."
+          placeholder="Search users..."
           className="srchBox"
           type="text"
           onChange={(e) => setId(e.target.value)}
@@ -95,20 +101,21 @@ export default function App() {
           Post
         </button>
         <button className="btnBox" onClick={getDataById}>
-          Patch
+          RePost
         </button>
         <button className="btnBox" onClick={deleteData}>
           Delete
         </button>
       </div>
-
-      {isLoading ? (
-        <SpinnerCustomized />
-      ) : (
-        data.map((user, id) => {
-          return <UserBox key={id} user={user} />;
-        })
-      )}
+      <div className="userBoxContainer">
+        {data && (
+          data.map((user, id) => {
+            return <UserBox key={id} user={user} />;
+          })
+        )}
+      </div>
     </div>
+      )}
+    </>
   );
 }

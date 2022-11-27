@@ -14,12 +14,12 @@ export default function Loading() {
       <ReactLoading type="cubes" color="#0000FF"
         height={100} width={50} />
       <ReactLoading type="cylon" color="#0000FF" 
-        height={100} width={50} />
-      <ReactLoading type="spin" color="#0000FF"
         height={100} width={50} /> */}
-      <ReactLoading type="spokes" color="#0000FF"
+      <ReactLoading type="spin" color="#D6ECF6"
+        height={100} width={50} />
+      {/* <ReactLoading type="spokes" color="#0000FF"
         height={60} width={60} />
-      {/* <ReactLoading
+      <ReactLoading
         type="spinningBubbles"
         color="#0000FF"
         height={100}
