@@ -58,13 +58,15 @@ export default function App() {
 
   const deleteData = async () => {
     setIsLoading(true);
-    const rosponse = await instance.delete(`user/${id}`);
+    const rosponse = await instance.delete(`products/${id}`);
+    console.log(rosponse);
     setData(
       data.filter((e) => {
         return e.id !== id;
       })
     );
     setIsLoading(false);
+    console.log("asd");
   };
   // const postData = async () => {
   //   const rosponse = await instance.post("", {});
@@ -87,34 +89,33 @@ export default function App() {
         <Loading />
       ) : (
         <div className="container">
-      <div className="srchBoxContainer">
-        <input
-          placeholder="Search users..."
-          className="srchBox"
-          type="text"
-          onChange={(e) => setId(e.target.value)}
-        ></input>
-        <button className="btnBox" onClick={getDataById}>
-          Get
-        </button>
-        <button className="btnBox" onClick={getDataById}>
-          Post
-        </button>
-        <button className="btnBox" onClick={getDataById}>
-          RePost
-        </button>
-        <button className="btnBox" onClick={deleteData}>
-          Delete
-        </button>
-      </div>
-      <div className="userBoxContainer">
-        {data && (
-          data.map((user, id) => {
-            return <UserBox key={id} user={user} />;
-          })
-        )}
-      </div>
-    </div>
+          <div className="srchBoxContainer">
+            <input
+              placeholder="Search users..."
+              className="srchBox"
+              type="text"
+              onChange={(e) => setId(e.target.value)}
+            ></input>
+            <button className="btnBox" onClick={getDataById}>
+              Get
+            </button>
+            <button className="btnBox" onClick={getDataById}>
+              Post
+            </button>
+            <button className="btnBox" onClick={getDataById}>
+              RePost
+            </button>
+            <button className="btnBox" onClick={deleteData}>
+              Delete
+            </button>
+          </div>
+          <div className="userBoxContainer">
+            {data &&
+              data.map((user, id) => {
+                return <UserBox key={id} user={user} />;
+              })}
+          </div>
+        </div>
       )}
     </>
   );
